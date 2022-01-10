@@ -40,8 +40,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-    def comment_count(self):
-        return self.comment_set.all().count()
+    # def comment_count(self):
+    #     return self.comment_set.all().count()
     
     def comments(self):
         return self.comment_set.all()
