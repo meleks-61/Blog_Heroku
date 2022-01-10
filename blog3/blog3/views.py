@@ -26,21 +26,29 @@ def index(request):
         ).distinct()
     
     #pegination
-    paginator=Paginator(post_list,3)#bir sayfada kaçtane görülmesi gerektiğine karar veriyor
-    page=request.GET.get('page')
-    try:
-        posts=paginator.page(page)
-    except PageNotAnInteger:
-        #if page is not an integer,deliver first page.
-        posts=paginator.page(1)
-    except EmptyPage:
-        #if page is out of range ,deliver last page of results
-        posts=paginator.page(paginator.num_pages)
+    paginator=Paginator(post_list,3)
+    page_number=request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
+    
+    
+    
+    
+    # paginator=Paginator(post_list,3)#bir sayfada kaçtane görülmesi gerektiğine karar veriyor
+    # page=request.GET.get('page')
+    # try:
+    #     posts=paginator.page(page)
+    # except PageNotAnInteger:
+    #     #if page is not an integer,deliver first page.
+    #     posts=paginator.page(1)
+    # except EmptyPage:
+    #     #if page is out of range ,deliver last page of results
+    #     posts=paginator.page(paginator.num_pages)
            
     context={
-        "posts":posts,
+        "page_obj":page_obj,
         "cats":cats,
-        "recent_posts":recent_posts
+        "recent_posts":recent_posts,
+        
         
     }
    
