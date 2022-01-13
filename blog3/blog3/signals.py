@@ -2,7 +2,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
 from .models import Post,Category
-from .utils import get_random_code#utils kendi yazdıgımız script
+from .utils import get_random_code#utils kendi yazdıgımız script,app,mizin içine "util.py" adında bir dosya(script)açıyoruz
 
 @receiver(pre_save,sender=Post)
 def pre_save_create_slug(sender,instance,**kwargs):
